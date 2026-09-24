@@ -1,0 +1,160 @@
+.about {
+  padding-bottom: var(--section-gap);
+}
+
+.panel {
+  padding: 28px 32px;
+  border: 1px solid var(--border-panel);
+  border-radius: var(--radius-panel);
+  background: var(--surface-2);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-small);
+  line-height: 1.6;
+}
+
+.table th,
+.table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--divider);
+  text-align: left;
+  vertical-align: baseline;
+}
+
+.table th {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--fs-label);
+  color: var(--dim);
+}
+
+.table tr:last-child td {
+  border-bottom: 0;
+}
+
+.idCell {
+  font-family: var(--font-mono);
+  color: var(--dim);
+  width: 72px;
+}
+
+.statusCell {
+  color: var(--muted);
+  width: 120px;
+}
+
+.severity {
+  display: inline-block;
+  padding: 2px 8px;
+  border: 1px solid var(--border-ctl);
+  border-radius: var(--radius-badge);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-2);
+}
+
+.severityMedium {
+  border-color: var(--border-medium);
+  color: var(--accent);
+}
+
+.severityCosmetic {
+  border-style: dashed;
+  color: var(--muted);
+}
+
+.list {
+  display: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.flakyJoke {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--divider);
+}
+
+.flakyTitle {
+  margin: 0 0 8px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  color: var(--fail-text);
+  word-break: break-word;
+}
+
+.failGlyph {
+  color: var(--fail);
+  font-weight: 700;
+}
+
+.flakyComment {
+  margin: 0 0 8px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  color: var(--muted);
+}
+
+.flakyHint {
+  margin: 0;
+  color: var(--dim);
+  font-size: var(--fs-small);
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 4px;
+}
+
+.footerText {
+  color: var(--muted);
+  font-size: var(--fs-small);
+}
+
+@media (max-width: 639px) {
+  .about {
+    padding-bottom: var(--section-gap-m);
+  }
+
+  .panel {
+    padding: 20px 16px;
+  }
+
+  .table {
+    display: none;
+  }
+
+  .list {
+    display: block;
+  }
+
+  .listItem {
+    padding: 14px 0;
+    border-top: 1px solid var(--divider);
+    font-size: var(--fs-small);
+  }
+
+  .listMeta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 640px) {
+  .list {
+    display: none;
+  }
+}

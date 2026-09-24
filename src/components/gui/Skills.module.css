@@ -1,0 +1,50 @@
+.skills {
+  padding-bottom: var(--section-gap);
+}
+
+.groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 32px;
+}
+
+.groupLabel {
+  margin: 0 0 12px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  padding: 8px 14px;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border-ctl);
+  border-radius: var(--radius-chip);
+  background: var(--surface);
+  color: var(--text);
+  font-size: var(--fs-small);
+}
+
+@media (max-width: 767px) {
+  .groups {
+    grid-template-columns: 1fr;
+  }
+
+  .skills {
+    padding-bottom: var(--section-gap-m);
+  }
+}

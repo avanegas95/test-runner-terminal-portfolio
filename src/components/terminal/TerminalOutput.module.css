@@ -1,0 +1,88 @@
+.output {
+  min-height: 0;
+}
+
+.line {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.segment {
+  font: inherit;
+}
+
+.clickable {
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.clickable:hover {
+  text-decoration: underline;
+}
+
+.clickable:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 1px;
+}
+
+.default {
+  color: var(--text);
+}
+
+.dim {
+  color: var(--dim);
+}
+
+.bold {
+  color: var(--text-strong);
+  font-weight: 700;
+}
+
+.dir {
+  color: var(--accent);
+}
+
+.file {
+  color: var(--text-2);
+}
+
+.success {
+  color: var(--pass);
+}
+
+.error {
+  color: var(--fail);
+}
+
+.warning {
+  color: var(--accent-hover);
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.comment {
+  color: var(--dim);
+  font-style: italic;
+}
+
+.keyword {
+  color: var(--accent-hover);
+}
+
+.string {
+  color: var(--pass);
+}
+
+.number {
+  color: var(--accent);
+}
+
+.marker {
+  color: var(--accent-hover);
+}

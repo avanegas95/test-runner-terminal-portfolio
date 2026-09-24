@@ -1,0 +1,39 @@
+.inputRow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-shrink: 0;
+}
+
+.prompt {
+  flex-shrink: 0;
+  color: var(--text);
+  white-space: pre;
+  font: inherit;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  min-height: var(--touch-min);
+  padding: 8px 0;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  outline: none;
+}
+
+.input:disabled {
+  opacity: 0.6;
+}
+
+.input:focus-visible {
+  outline: none;
+}
+
+.inputRow:focus-within {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-btn);
+}

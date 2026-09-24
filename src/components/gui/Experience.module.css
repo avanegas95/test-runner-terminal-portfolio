@@ -1,0 +1,37 @@
+.experience {
+  padding-bottom: var(--section-gap);
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.companyGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.companyName {
+  margin: 0;
+  padding-left: 16px;
+  border-left: 3px solid var(--accent);
+  font-family: var(--font-mono);
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  color: var(--text-strong);
+}
+
+.roles {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media (max-width: 639px) {
+  .experience {
+    padding-bottom: var(--section-gap-m);
+  }
+}
