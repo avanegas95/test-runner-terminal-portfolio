@@ -584,11 +584,6 @@ a:hover {
 
 
 /* Collapsed suites link */
-.collapsed-suites {
-  margin-top: 16px;
-  color: var(--muted);
-}
-
 /* Summary */
 .summary {
   margin-top: 28px;

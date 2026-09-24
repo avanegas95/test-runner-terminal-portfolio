@@ -6,7 +6,6 @@ import {
   computeSummary,
   failureDetail,
   getNextTestId,
-  getSuiteForTest,
   getTestById,
   suites,
 } from "@/content/tests";
@@ -42,17 +41,6 @@ function suiteStatus(suite: Suite) {
 
 function shortName(test: Test) {
   return test.name.split(" — ")[0];
-}
-
-function collapsedSuiteSummary(expandedTestId: string) {
-  const expandedSuite = getSuiteForTest(expandedTestId);
-  const hiddenSuites = suites.filter((s) => s.file !== expandedSuite?.file);
-  const hiddenTests = hiddenSuites.flatMap((s) => s.tests);
-  return {
-    hiddenCount: hiddenSuites.length,
-    hiddenPassed: hiddenTests.filter((t) => t.status === "pass").length,
-    hiddenFailed: hiddenTests.filter((t) => t.status === "fail").length,
-  };
 }
 
 function FinalPrompt({ delay }: { delay?: number }) {
@@ -164,17 +152,9 @@ export function TestRun({
     if (mode === "known-issues") {
       return suites.filter((s) => suiteStatus(s) === "fail");
     }
-    if (mode === "expanded" && expandedTestId) {
-      const expandedSuite = getSuiteForTest(expandedTestId);
-      return suites.filter((s) => s.file === expandedSuite?.file);
-    }
+    // Expanding a test opens it inline; the rest of the run stays put.
     return suites;
   };
-
-  const collapsed =
-    mode === "expanded" && expandedTestId
-      ? collapsedSuiteSummary(expandedTestId)
-      : null;
 
   return (
     <div className="run">
@@ -182,7 +162,7 @@ export function TestRun({
         <span className="prompt__dollar">$</span> {promptCommand()}
       </div>
 
-      {mode === "home" && (
+      {mode !== "known-issues" && (
         <div
           className={`prompt__dim${animate ? " reveal-line" : ""}`}
           style={
@@ -195,22 +175,6 @@ export function TestRun({
 
       {visibleSuites().map(renderSuite)}
 
-      {collapsed && collapsed.hiddenCount > 0 && (
-        <div className="collapsed-suites">
-          <button type="button" className="test-row" onClick={onCollapse}>
-            <span aria-hidden="true">+</span>
-            <span>
-              {collapsed.hiddenCount} more suites · {collapsed.hiddenPassed}{" "}
-              passed, {collapsed.hiddenFailed} failed
-            </span>
-            <span />
-            <span className="test-row__chev test-row__chevron" aria-hidden="true">
-              ›
-            </span>
-          </button>
-        </div>
-      )}
-
       {mode !== "known-issues" && (
         <SummaryBlock
           passed={summary.passed}
@@ -218,7 +182,7 @@ export function TestRun({
           skipped={summary.skipped}
           coverage={summary.coverage}
           timeSeconds={summary.timeSeconds}
-          showComment={mode === "home"}
+          showComment
           revealDelay={animate ? animationSchedule.summary : undefined}
           commentDelay={animate ? animationSchedule.comment : undefined}
         />
