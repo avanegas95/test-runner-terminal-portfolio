@@ -1,0 +1,52 @@
+/* avanegas.com — Test Runner Terminal tokens. Dark theme only. */
+:root {
+  /* Surfaces */
+  --bg:            #111210; /* page */
+  --surface:       #161814; /* terminal window */
+  --surface-2:     #1A1C18; /* inline panels (detail, KNOWN_ISSUES.md) */
+  --row-hover:     #1F221C; /* test row hover / expanded row */
+  --fail-surface:  #1C1715; /* failure detail panel */
+  --fail-row:      #241C1A; /* expanded failing row */
+
+  /* Borders */
+  --border:        #2A2D27; /* terminal window, dividers */
+  --border-panel:  #2F332C;
+  --border-ctl:    #3A3D36; /* buttons, chips */
+  --border-fail:   #4A2E29;
+  --border-medium: #6B5220; /* "medium" severity chip */
+  --divider:       #262923; /* table rows */
+
+  /* Text */
+  --text-strong:   #F4F2EC; /* h1, h2 */
+  --text:          #E8E6DF; /* body */
+  --text-2:        #C9C7BE; /* plain-English paragraphs */
+  --muted:         #A8A69C; /* secondary copy */
+  --dim:           #8E8C83; /* comments, timings, labels (5.4:1 on --bg) */
+  --decor:         #55534C; /* decorative only (row chevron), never text */
+  --dot:           #34372F; /* window dots */
+
+  /* Accent + status */
+  --accent:        #F5B942; /* amber: prompt $, links, primary button, cursor */
+  --accent-hover:  #FFD684;
+  --on-accent:     #17140A;
+  --pass:          #8FD6A4;
+  --on-pass:       #0F1A12;
+  --fail:          #FF8F80;
+  --fail-text:     #FFB3A8;
+  --on-fail:       #2A0F0B;
+
+  /* Type */
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  --fs-h1: 40px;  --fs-h1-m: 30px;
+  --fs-h2: 24px;  --fs-h2-m: 20px;
+  --fs-term: 16px; --fs-term-m: 13px;
+  --lh-term: 1.75; --lh-term-m: 1.7;
+
+  /* Shape */
+  --radius-window: 12px;
+  --radius-panel: 10px;
+  --radius-btn: 8px;
+  --radius-row: 6px;
+  --radius-badge: 4px;
+  --touch-min: 44px;
+}

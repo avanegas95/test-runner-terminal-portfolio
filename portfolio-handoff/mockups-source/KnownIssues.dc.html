@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Known Issues — about Anderson</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap">
+<style>
+body{margin:0;background:#111210;color:#E8E6DF;font-family:'JetBrains Mono',ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;-webkit-font-smoothing:antialiased}
+a{color:#F5B942}a:hover{color:#FFD684}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.cursor{display:inline-block;width:.55em;height:1.1em;margin-left:6px;background:#F5B942;vertical-align:-0.2em;animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{0%,45%{opacity:.9}55%,100%{opacity:.25}}
+.t{display:grid;grid-template-columns:1.5em minmax(0,1fr) auto 1em;column-gap:12px;align-items:baseline;width:calc(100% + 20px);box-sizing:border-box;padding:4px 10px;margin:0 -10px;border:0;border-radius:6px;background:transparent;color:#E8E6DF;font:inherit;line-height:inherit;text-align:left;text-decoration:none;cursor:pointer}
+.t:hover{background:#1F221C;color:#FFFFFF}
+.t:focus-visible,.btn:focus-visible{outline:2px solid #F5B942;outline-offset:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:8px;border:1px solid #3A3D36;background:transparent;color:#E8E6DF;font:inherit;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;box-sizing:border-box}
+.btn:hover{border-color:#F5B942;color:#FFFFFF}
+.btn.primary{background:#F5B942;border-color:#F5B942;color:#17140A}
+.btn.primary:hover{background:#FFD684;color:#17140A}
+.ki td,.ki th{padding:12px 16px;border-bottom:1px solid #262923;text-align:left;vertical-align:baseline}
+.ki th{font-weight:500;color:#8E8C83;font-size:13px}
+.ki tr:last-child td{border-bottom:0}
+@media (prefers-reduced-motion:reduce){.cursor{animation:none;opacity:.9}}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1760px; box-sizing: border-box; padding: 72px 80px; display: flex; gap: 64px; align-items: flex-start; background: #111210">
+
+<aside style="width: 360px; flex-shrink: 0; display: flex; flex-direction: column; gap: 24px; padding-top: 12px">
+<div style="font-size: 14px; color: #8E8C83">// Boston, MA</div>
+<h1 style="margin: 0; font-size: 40px; line-height: 1.15; font-weight: 700; letter-spacing: -0.02em; color: #F4F2EC">Anderson Vanegas</h1>
+<p style="margin: 0; font-size: 17px; line-height: 1.6">Staff SQA Engineer at <span style="color: #F5B942">Boston Dynamics</span>.</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.75; color: #A8A69C; text-wrap: pretty">6+ years in QA, now building the automation behind it: Python tooling, Appium mobile tests and CI/CD pipelines.</p>
+<nav aria-label="Main" style="display: flex; flex-direction: column; gap: 10px; margin-top: 8px">
+<a class="btn" href="#projects" style="justify-content: space-between">Projects<span aria-hidden="true">→</span></a>
+<a class="btn primary" href="#resume" style="justify-content: space-between">Resume<span aria-hidden="true">→</span></a>
+<a class="btn" href="#contact" style="justify-content: space-between">Contact<span aria-hidden="true">→</span></a>
+</nav>
+</aside>
+
+<section aria-label="Test results" style="flex-grow: 1; min-width: 0; background: #161814; border: 1px solid #2A2D27; border-radius: 12px; overflow: hidden">
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 12px 8px 20px; border-bottom: 1px solid #2A2D27">
+<div style="display: flex; align-items: center; gap: 16px; font-size: 13px; color: #A8A69C">
+<span aria-hidden="true" style="display: flex; gap: 8px"><span style="width: 10px; height: 10px; border-radius: 50%; background: #34372F"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #34372F"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #34372F"></span></span>
+<span>~/anderson — test run</span>
+</div>
+<a class="btn" href="Main.dc.html" style="font-size: 13px"><span aria-hidden="true">←</span>All results</a>
+</div>
+
+<div style="padding: 32px 40px 40px; font-size: 16px; line-height: 1.75">
+<div><span style="color: #F5B942">$</span> npm test anderson --onlyFailures</div>
+
+<div style="display: flex; align-items: center; gap: 12px; margin-top: 20px"><span style="background: #FF8F80; color: #2A0F0B; padding: 0 8px; border-radius: 4px; font-size: 13px; font-weight: 700; line-height: 1.7">FAIL</span><span>personality.spec.ts</span></div>
+<div style="display: flex; flex-direction: column; padding-left: 28px; margin-top: 6px">
+<a class="t" href="Main.dc.html" aria-expanded="true" style="background: #241C1A; color: #FFFFFF"><span style="color: #FF8F80" aria-hidden="true">✗</span><span style="color: #FFB3A8"><span class="sr">Failed: </span>ability to ignore a flaky test</span><span></span><span aria-hidden="true" style="color: #FF8F80">▾</span></a>
+
+<div role="region" aria-label="Failure details" style="margin: 10px 0 0 34px; padding: 24px 28px; border: 1px solid #4A2E29; border-radius: 10px; background: #1C1715; display: flex; flex-direction: column; gap: 16px">
+<div style="color: #FFB3A8; font-weight: 500">● personality › ability to ignore a flaky test</div>
+<div>expect(anderson.ignore(flakyTest)).toBe(<span style="color: #8FD6A4">true</span>)</div>
+<div style="display: grid; grid-template-columns: 112px minmax(0, 1fr)">
+<span style="color: #8E8C83">Expected:</span><span style="color: #8FD6A4">true</span>
+<span style="color: #8E8C83">Received:</span><span style="color: #FFB3A8">"rerun it, reproduce it, find the root cause, file the ticket"</span>
+</div>
+<div style="font-size: 14px; color: #8E8C83">at Object.&lt;anonymous&gt; (personality.spec.ts:1:1)</div>
+<div style="color: #C9C7BE">// Status: won’t fix. Working as intended.</div>
+</div>
+</div>
+
+<div style="margin-top: 32px"><span style="color: #F5B942">$</span> cat KNOWN_ISSUES.md</div>
+<div style="margin-top: 14px; padding: 28px 32px; border: 1px solid #2F332C; border-radius: 10px; background: #1A1C18; display: flex; flex-direction: column; gap: 20px">
+<div>
+<h2 style="margin: 0; font-size: 24px; line-height: 1.3; font-weight: 700; color: #F4F2EC"><span style="color: #8E8C83; font-weight: 400">#</span> Known Issues</h2>
+<p style="margin: 6px 0 0; color: #A8A69C">The person behind the test plans, filed like a bug report.</p>
+</div>
+<table class="ki" style="width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.6">
+<thead>
+<tr><th scope="col" style="width: 72px">ID</th><th scope="col">Issue</th><th scope="col" style="width: 120px">Severity</th><th scope="col" style="width: 120px">Status</th></tr>
+</thead>
+<tbody>
+<tr><td style="color: #8E8C83">KI-01</td><td>Can’t walk past a Raspberry Pi or ESP32 without starting a project.</td><td><span style="padding: 2px 8px; border: 1px solid #3A3D36; border-radius: 4px; font-size: 13px; color: #C9C7BE">low</span></td><td style="color: #A8A69C">won’t fix</td></tr>
+<tr><td style="color: #8E8C83">KI-02</td><td>Runs a self-hosted homelab server and takes its uptime personally.</td><td><span style="padding: 2px 8px; border: 1px solid #6B5220; border-radius: 4px; font-size: 13px; color: #F5B942">medium</span></td><td style="color: #A8A69C">by design</td></tr>
+<tr><td style="color: #8E8C83">KI-03</td><td>Carries a Fujifilm X100VI everywhere. Expect photos.</td><td><span style="padding: 2px 8px; border: 1px solid #3A3D36; border-radius: 4px; font-size: 13px; color: #C9C7BE">low</span></td><td style="color: #A8A69C">by design</td></tr>
+<tr><td style="color: #8E8C83">KI-04</td><td>The 3D printer queue is never empty.</td><td><span style="padding: 2px 8px; border: 1px solid #3A3D36; border-radius: 4px; font-size: 13px; color: #C9C7BE">low</span></td><td style="color: #A8A69C">open</td></tr>
+<tr><td style="color: #8E8C83">KI-05</td><td>Does his own wiring and plumbing, then regression-tests the house.</td><td><span style="padding: 2px 8px; border: 1px solid #6B5220; border-radius: 4px; font-size: 13px; color: #F5B942">medium</span></td><td style="color: #A8A69C">by design</td></tr>
+<tr><td style="color: #8E8C83">KI-06</td><td>Streams games, always in 16:9 for the viewers.</td><td><span style="padding: 2px 8px; border: 1px dashed #3A3D36; border-radius: 4px; font-size: 13px; color: #A8A69C">cosmetic</span></td><td style="color: #A8A69C">won’t fix</td></tr>
+<tr><td style="color: #8E8C83">KI-07</td><td>Mows the lawn in straight, reproducible lines.</td><td><span style="padding: 2px 8px; border: 1px dashed #3A3D36; border-radius: 4px; font-size: 13px; color: #A8A69C">cosmetic</span></td><td style="color: #A8A69C">closed</td></tr>
+<tr><td style="color: #8E8C83">KI-08</td><td>Cannot resist a pun.</td><td><span style="padding: 2px 8px; border: 1px solid #3A3D36; border-radius: 4px; font-size: 13px; color: #C9C7BE">low</span></td><td style="color: #A8A69C">won’t fix</td></tr>
+</tbody>
+</table>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 4px">
+<span style="color: #A8A69C">Found another one?</span>
+<a class="btn primary" href="#contact">Report it — Contact<span aria-hidden="true">→</span></a>
+</div>
+</div>
+<div style="margin-top: 20px"><span style="color: #F5B942">$</span><span class="cursor" aria-hidden="true"></span></div>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1760}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

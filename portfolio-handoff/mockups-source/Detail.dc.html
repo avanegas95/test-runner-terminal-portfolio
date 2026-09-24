@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Boston Dynamics — expanded test</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap">
+<style>
+body{margin:0;background:#111210;color:#E8E6DF;font-family:'JetBrains Mono',ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;-webkit-font-smoothing:antialiased}
+a{color:#F5B942}a:hover{color:#FFD684}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.cursor{display:inline-block;width:.55em;height:1.1em;margin-left:6px;background:#F5B942;vertical-align:-0.2em;animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{0%,45%{opacity:.9}55%,100%{opacity:.25}}
+.t{display:grid;grid-template-columns:1.5em minmax(0,1fr) auto 1em;column-gap:12px;align-items:baseline;width:calc(100% + 20px);box-sizing:border-box;padding:4px 10px;margin:0 -10px;border:0;border-radius:6px;background:transparent;color:#E8E6DF;font:inherit;line-height:inherit;text-align:left;text-decoration:none;cursor:pointer}
+.t:hover{background:#1F221C;color:#FFFFFF}
+.t:hover .go{color:#F5B942}
+.t:focus-visible,.btn:focus-visible{outline:2px solid #F5B942;outline-offset:2px}
+.go{color:#55534C}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:8px;border:1px solid #3A3D36;background:transparent;color:#E8E6DF;font:inherit;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;box-sizing:border-box}
+.btn:hover{border-color:#F5B942;color:#FFFFFF}
+.btn.primary{background:#F5B942;border-color:#F5B942;color:#17140A}
+.btn.primary:hover{background:#FFD684;color:#17140A}
+@media (prefers-reduced-motion:reduce){.cursor{animation:none;opacity:.9}}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1440px; box-sizing: border-box; padding: 72px 80px; display: flex; gap: 64px; align-items: flex-start; background: #111210">
+
+<aside style="width: 360px; flex-shrink: 0; display: flex; flex-direction: column; gap: 24px; padding-top: 12px">
+<div style="font-size: 14px; color: #8E8C83">// Boston, MA</div>
+<h1 style="margin: 0; font-size: 40px; line-height: 1.15; font-weight: 700; letter-spacing: -0.02em; color: #F4F2EC">Anderson Vanegas</h1>
+<p style="margin: 0; font-size: 17px; line-height: 1.6">Staff SQA Engineer at <span style="color: #F5B942">Boston Dynamics</span>.</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.75; color: #A8A69C; text-wrap: pretty">6+ years in QA, now building the automation behind it: Python tooling, Appium mobile tests and CI/CD pipelines.</p>
+<nav aria-label="Main" style="display: flex; flex-direction: column; gap: 10px; margin-top: 8px">
+<a class="btn" href="#projects" style="justify-content: space-between">Projects<span aria-hidden="true">→</span></a>
+<a class="btn primary" href="#resume" style="justify-content: space-between">Resume<span aria-hidden="true">→</span></a>
+<a class="btn" href="#contact" style="justify-content: space-between">Contact<span aria-hidden="true">→</span></a>
+</nav>
+</aside>
+
+<section aria-label="Test results" style="flex-grow: 1; min-width: 0; background: #161814; border: 1px solid #2A2D27; border-radius: 12px; overflow: hidden">
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 12px 8px 20px; border-bottom: 1px solid #2A2D27">
+<div style="display: flex; align-items: center; gap: 16px; font-size: 13px; color: #A8A69C">
+<span aria-hidden="true" style="display: flex; gap: 8px"><span style="width: 10px; height: 10px; border-radius: 50%; background: #34372F"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #34372F"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #34372F"></span></span>
+<span>~/anderson — test run</span>
+</div>
+<a class="btn" href="Main.dc.html" style="font-size: 13px"><span aria-hidden="true">←</span>All results</a>
+</div>
+
+<div style="padding: 32px 40px 40px; font-size: 16px; line-height: 1.75">
+<div><span style="color: #F5B942">$</span> npm test anderson -t "Boston Dynamics"</div>
+
+<div style="display: flex; align-items: center; gap: 12px; margin-top: 20px"><span style="background: #8FD6A4; color: #0F1A12; padding: 0 8px; border-radius: 4px; font-size: 13px; font-weight: 700; line-height: 1.7">PASS</span><span>career.spec.ts</span></div>
+<div style="display: flex; flex-direction: column; padding-left: 28px; margin-top: 6px">
+<button class="t" type="button"><span style="color: #8FD6A4" aria-hidden="true">✓</span><span><span class="sr">Passed: </span>6+ years of QA experience</span><span style="color: #8E8C83; font-size: 14px">412ms</span><span class="go" aria-hidden="true">›</span></button>
+<a class="t" href="Main.dc.html" aria-expanded="true" style="background: #1F221C; color: #FFFFFF"><span style="color: #8FD6A4" aria-hidden="true">✓</span><span><span class="sr">Passed: </span>Boston Dynamics — QA lead, 2023–present</span><span style="color: #8E8C83; font-size: 14px">274ms</span><span aria-hidden="true" style="color: #F5B942">▾</span></a>
+
+<div role="region" aria-label="Boston Dynamics details" style="margin: 10px 0 14px 34px; padding: 28px 32px; border: 1px solid #2F332C; border-radius: 10px; background: #1A1C18; display: flex; flex-direction: column; gap: 24px">
+<dl style="margin: 0; display: grid; grid-template-columns: 96px minmax(0, 1fr); row-gap: 2px; column-gap: 16px">
+<dt style="color: #8E8C83">role</dt><dd style="margin: 0">Staff SQA Engineer</dd>
+<dt style="color: #8E8C83">company</dt><dd style="margin: 0">Boston Dynamics</dd>
+<dt style="color: #8E8C83">period</dt><dd style="margin: 0">2023 — present</dd>
+</dl>
+<p style="margin: 0; color: #C9C7BE; text-wrap: pretty"><span style="color: #8E8C83">// In plain English:</span> Anderson leads quality for Boston Dynamics’ robot software. He tests it on real robots, in simulation and in the Android app — then automates those checks so every build runs them.</p>
+<div>
+<div>describe(<span style="color: #F5B942">'what he does'</span>)</div>
+<ul style="list-style: none; margin: 8px 0 0; padding: 0 0 0 24px; display: flex; flex-direction: column; gap: 6px">
+<li style="display: grid; grid-template-columns: 1.5em minmax(0, 1fr); column-gap: 12px"><span style="color: #8FD6A4" aria-hidden="true">✓</span><span>QA lead across HIL, Gazebo simulation and Appium Android app testing</span></li>
+<li style="display: grid; grid-template-columns: 1.5em minmax(0, 1fr); column-gap: 12px"><span style="color: #8FD6A4" aria-hidden="true">✓</span><span>Built a Python, SSH-based monitoring tool for real-time robot metrics</span></li>
+<li style="display: grid; grid-template-columns: 1.5em minmax(0, 1fr); column-gap: 12px"><span style="color: #8FD6A4" aria-hidden="true">✓</span><span>Integrated automated tests into CI/CD with stage-based reporting</span></li>
+<li style="display: grid; grid-template-columns: 1.5em minmax(0, 1fr); column-gap: 12px"><span style="color: #8FD6A4" aria-hidden="true">✓</span><span>Onboarded non-SQA engineers through QA training</span></li>
+</ul>
+</div>
+<div style="font-size: 14px; line-height: 1.7; color: #8E8C83">
+<div>// HIL = hardware-in-the-loop: software tested against real robot hardware.</div>
+<div>// Gazebo = a robotics simulator, for testing without a physical robot.</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a class="btn" href="Main.dc.html"><span aria-hidden="true">▴</span>Collapse</a>
+<a class="btn" href="#sharkninja">Next: SharkNinja<span aria-hidden="true">→</span></a>
+<a class="btn primary" href="#resume">Full resume<span aria-hidden="true">→</span></a>
+</div>
+</div>
+
+<button class="t" type="button"><span style="color: #8FD6A4" aria-hidden="true">✓</span><span><span class="sr">Passed: </span>SharkNinja — cloud &amp; mobile app QA, 2019–2023</span><span style="color: #8E8C83; font-size: 14px">198ms</span><span class="go" aria-hidden="true">›</span></button>
+<button class="t" type="button"><span style="color: #8FD6A4" aria-hidden="true">✓</span><span><span class="sr">Passed: </span>mentors junior engineers</span><span style="color: #8E8C83; font-size: 14px">96ms</span><span class="go" aria-hidden="true">›</span></button>
+<button class="t" type="button"><span style="color: #8FD6A4" aria-hidden="true">✓</span><span><span class="sr">Passed: </span>trains non-SQA engineers in QA</span><span style="color: #8E8C83; font-size: 14px">143ms</span><span class="go" aria-hidden="true">›</span></button>
+</div>
+
+<div style="margin-top: 16px">
+<a class="t" href="Main.dc.html" style="color: #A8A69C"><span aria-hidden="true">+</span><span>3 more suites · 9 passed, 1 failed</span><span></span><span class="go" aria-hidden="true">›</span></a>
+</div>
+
+<div style="margin-top: 24px; display: grid; grid-template-columns: 112px minmax(0, 1fr)">
+<span style="color: #8E8C83">Tests:</span><span><strong style="color: #8FD6A4">14 passed</strong>, <strong style="color: #FF8F80">1 failed</strong>, 0 skipped — coverage 98%</span>
+</div>
+<div style="margin-top: 16px"><span style="color: #F5B942">$</span><span class="cursor" aria-hidden="true"></span></div>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1440}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>
