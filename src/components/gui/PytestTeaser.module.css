@@ -1,0 +1,73 @@
+.teaser {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  width: 100%;
+  min-height: var(--touch-min);
+  margin-top: 28px;
+  padding: 14px 18px;
+  border: 1px solid var(--border-panel);
+  border-radius: var(--radius-panel);
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.teaser:hover {
+  border-color: var(--accent);
+  background: var(--surface-2);
+}
+
+.prompt {
+  color: var(--text);
+}
+
+.dollar {
+  color: var(--accent);
+  margin-right: 4px;
+}
+
+.arrow {
+  color: var(--dim);
+}
+
+.passed {
+  color: var(--pass);
+  font-weight: 600;
+}
+
+.failed {
+  color: var(--fail);
+  font-weight: 600;
+}
+
+.dim {
+  color: var(--dim);
+}
+
+.sep {
+  color: var(--muted);
+}
+
+.runHint {
+  margin-left: auto;
+  color: var(--accent);
+  font-size: var(--fs-label);
+}
+
+@media (max-width: 639px) {
+  .teaser {
+    font-size: var(--fs-label);
+    padding: 12px 14px;
+  }
+
+  .runHint {
+    margin-left: 0;
+    flex-basis: 100%;
+  }
+}

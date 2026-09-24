@@ -1,0 +1,80 @@
+.card {
+  padding: 28px;
+  border: 1px solid var(--border-panel);
+  border-radius: var(--radius-panel);
+  background: var(--surface);
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-bottom: 12px;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  color: var(--text-strong);
+}
+
+.company {
+  margin: 4px 0 0;
+  font-size: var(--fs-small);
+  color: var(--muted);
+}
+
+.dates {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  color: var(--dim);
+  white-space: nowrap;
+}
+
+.oneLiner {
+  margin: 0 0 16px;
+  color: var(--text-2);
+  font-size: var(--fs-body);
+}
+
+.bullets {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bullet {
+  display: grid;
+  grid-template-columns: 1.25em minmax(0, 1fr);
+  gap: 10px;
+  color: var(--muted);
+  font-size: var(--fs-small);
+  line-height: 1.65;
+}
+
+.bulletGlyph {
+  color: var(--pass);
+  font-family: var(--font-mono);
+}
+
+.terminalLink {
+  margin-top: 16px;
+  width: 100%;
+  justify-content: flex-start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 639px) {
+  .card {
+    padding: 20px;
+  }
+}

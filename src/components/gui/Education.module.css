@@ -1,0 +1,42 @@
+.education {
+  padding-bottom: var(--section-gap);
+}
+
+.card {
+  max-width: 480px;
+  padding: 28px;
+  border: 1px solid var(--border-panel);
+  border-radius: var(--radius-panel);
+  background: var(--surface);
+}
+
+.institution {
+  margin: 0 0 8px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  color: var(--text-strong);
+}
+
+.degree {
+  margin: 0 0 4px;
+  color: var(--text-2);
+  font-size: var(--fs-body);
+}
+
+.year {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  color: var(--dim);
+}
+
+@media (max-width: 639px) {
+  .education {
+    padding-bottom: var(--section-gap-m);
+  }
+
+  .card {
+    padding: 20px;
+  }
+}

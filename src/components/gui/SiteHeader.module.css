@@ -1,0 +1,237 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-height);
+  border-bottom: 1px solid var(--border);
+  background: rgb(17 18 16 / 92%);
+  backdrop-filter: blur(12px);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: var(--content-max);
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-strong);
+  text-decoration: none;
+  min-height: var(--touch-min);
+}
+
+.logo:hover {
+  color: var(--accent);
+}
+
+.logoMark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-badge);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 700;
+}
+
+.logoName {
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  font-weight: 600;
+}
+
+.nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.navList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-min);
+  padding: 0 4px;
+  color: var(--muted);
+  font-size: var(--fs-small);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.navLink:hover {
+  color: var(--accent);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.resumeDropdown {
+  position: relative;
+}
+
+.resumeBtn {
+  font-size: var(--fs-label);
+  padding: 0 16px;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 200px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  border: 1px solid var(--border-panel);
+  border-radius: var(--radius-panel);
+  background: var(--surface-2);
+  box-shadow: 0 12px 32px rgb(0 0 0 / 40%);
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  min-height: var(--touch-min);
+  padding: 0 14px;
+  border-radius: var(--radius-row);
+  color: var(--text);
+  font-size: var(--fs-small);
+  text-decoration: none;
+}
+
+.dropdownItem:hover {
+  background: var(--row-hover);
+  color: var(--accent);
+}
+
+.terminalBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: var(--touch-min);
+  padding: 0 14px;
+  border: 1px solid var(--border-ctl);
+  border-radius: var(--radius-btn);
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.terminalBtn:hover {
+  border-color: var(--accent);
+  background: var(--surface-2);
+}
+
+.terminalIcon {
+  color: var(--accent);
+}
+
+.kbd {
+  padding: 2px 6px;
+  border: 1px solid var(--border-ctl);
+  border-radius: 4px;
+  background: var(--bg);
+  color: var(--dim);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.menuBtn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--touch-min);
+  min-height: var(--touch-min);
+  border: 1px solid var(--border-ctl);
+  border-radius: var(--radius-btn);
+  background: transparent;
+  color: var(--text);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.mobileNav {
+  display: none;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.mobileNavList {
+  margin: 0;
+  padding: 12px 20px 20px;
+  list-style: none;
+}
+
+.mobileNavLink {
+  display: flex;
+  align-items: center;
+  min-height: var(--touch-min);
+  color: var(--text);
+  font-size: var(--fs-body);
+  text-decoration: none;
+}
+
+.mobileNavLink:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .nav {
+    display: none;
+  }
+
+  .kbd,
+  .terminalLabel {
+    display: none;
+  }
+}
+
+@media (max-width: 639px) {
+  .inner {
+    padding: 0 16px;
+  }
+
+  .resumeDropdown {
+    display: none;
+  }
+
+  .menuBtn {
+    display: inline-flex;
+  }
+
+  .mobileNav {
+    display: block;
+  }
+}
+
+@media (min-width: 640px) {
+  .mobileNav {
+    display: none !important;
+  }
+}

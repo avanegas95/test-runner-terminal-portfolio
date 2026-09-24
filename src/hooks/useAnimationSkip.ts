@@ -1,15 +1,15 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { animationSchedule } from "@/content/tests";
 
 const STORAGE_KEY = "test-run-animation-skipped";
-const RUN_MS = animationSchedule.cursor * 1000 + 100;
+/** Default pytest reveal duration (seconds) + buffer — used by terminal pytest animation. */
+const RUN_MS = 4300;
 
 export type RunState = "running" | "skipped" | "done";
 
 /**
- * Tracks the home-page reveal. `active` is true while the home run is on screen;
+ * Tracks a timed reveal animation. `active` is true while the animation is on screen;
  * leaving it (or a reduced-motion / remembered-skip preference) ends the run for good.
  */
 export function useAnimationSkip(reducedMotion: boolean, active: boolean) {
