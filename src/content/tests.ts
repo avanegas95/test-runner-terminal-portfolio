@@ -202,7 +202,6 @@ export const suites: Suite[] = [
 
 export const failureDetail: FailureDetail = {
   title: "● personality › ability to ignore a flaky test",
-  expectLine: "expect(anderson.ignore(flakyTest)).toBe(true)",
   expected: "true",
   received: '"rerun it, reproduce it, find the root cause, file the ticket"',
   stack: "at Object.<anonymous> (personality.spec.ts:1:1)",

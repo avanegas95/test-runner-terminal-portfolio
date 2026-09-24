@@ -38,14 +38,8 @@ export type KnownIssue = {
 
 export type FailureDetail = {
   title: string;
-  expectLine: string;
   expected: string;
   received: string;
   stack: string;
   statusComment: string;
-};
-
-export type AnimationDelay = {
-  id: string;
-  delay: number;
 };

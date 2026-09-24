@@ -7,8 +7,9 @@ type SummaryBlockProps = {
   coverage: number;
   timeSeconds: string;
   showComment?: boolean;
+  /** Reveal delays in seconds; omit to render without the reveal animation. */
   revealDelay?: number;
-  animate?: boolean;
+  commentDelay?: number;
 };
 
 export function SummaryBlock({
@@ -19,14 +20,14 @@ export function SummaryBlock({
   timeSeconds,
   showComment = true,
   revealDelay,
-  animate,
+  commentDelay,
 }: SummaryBlockProps) {
   return (
     <>
       <div
-        className={`summary${animate ? " reveal-line" : ""}`}
+        className={`summary${revealDelay !== undefined ? " reveal-line" : ""}`}
         style={
-          animate && revealDelay !== undefined
+          revealDelay !== undefined
             ? { animationDelay: `${revealDelay}s` }
             : undefined
         }
@@ -57,10 +58,10 @@ export function SummaryBlock({
 
       {showComment && (
         <p
-          className={`summary__comment${animate ? " reveal-line" : ""}`}
+          className={`summary__comment${commentDelay !== undefined ? " reveal-line" : ""}`}
           style={
-            animate && revealDelay !== undefined
-              ? { animationDelay: `${revealDelay + 0.3}s` }
+            commentDelay !== undefined
+              ? { animationDelay: `${commentDelay}s` }
               : undefined
           }
         >

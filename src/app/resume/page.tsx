@@ -7,12 +7,10 @@ export const metadata: Metadata = {
 
 export default function ResumePage() {
   return (
-    <main style={{ padding: "72px 80px", maxWidth: 720 }}>
-      <p style={{ color: "var(--dim)", fontSize: 14 }}>{"// Resume"}</p>
-      <h1 style={{ color: "var(--text-strong)", fontSize: 32, margin: "8px 0 16px" }}>
-        Resume
-      </h1>
-      <p style={{ color: "var(--muted)", lineHeight: 1.75 }}>
+    <main className="plain-page">
+      <p className="plain-page__eyebrow">{"// Resume"}</p>
+      <h1 className="plain-page__title">Resume</h1>
+      <p className="plain-page__text">
         Full resume PDF coming soon. Career highlights are in the{" "}
         <Link href="/#boston-dynamics">Boston Dynamics</Link> and{" "}
         <Link href="/#sharkninja">SharkNinja</Link> test panels on the{" "}

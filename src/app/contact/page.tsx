@@ -7,28 +7,16 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main style={{ padding: "72px 80px", maxWidth: 720 }}>
-      <p style={{ color: "var(--dim)", fontSize: 14 }}>{"// Contact"}</p>
-      <h1 style={{ color: "var(--text-strong)", fontSize: 32, margin: "8px 0 16px" }}>
-        Contact
-      </h1>
-      <ul
-        style={{
-          listStyle: "none",
-          padding: 0,
-          margin: "24px 0",
-          display: "flex",
-          flexDirection: "column",
-          gap: 12,
-          lineHeight: 1.75,
-        }}
-      >
+    <main className="plain-page">
+      <p className="plain-page__eyebrow">{"// Contact"}</p>
+      <h1 className="plain-page__title">Contact</h1>
+      <ul className="plain-page__links">
         <li>
-          <span style={{ color: "var(--dim)" }}>Email</span>{" "}
+          <span className="plain-page__label">Email</span>{" "}
           <a href="mailto:avanegas95@gmail.com">avanegas95@gmail.com</a>
         </li>
         <li>
-          <span style={{ color: "var(--dim)" }}>LinkedIn</span>{" "}
+          <span className="plain-page__label">LinkedIn</span>{" "}
           <a
             href="https://www.linkedin.com/in/avanegas95/"
             target="_blank"
@@ -38,7 +26,7 @@ export default function ContactPage() {
           </a>
         </li>
         <li>
-          <span style={{ color: "var(--dim)" }}>GitHub</span>{" "}
+          <span className="plain-page__label">GitHub</span>{" "}
           <a
             href="https://github.com/avanegas95"
             target="_blank"
@@ -48,7 +36,7 @@ export default function ContactPage() {
           </a>
         </li>
       </ul>
-      <p style={{ color: "var(--muted)" }}>
+      <p className="plain-page__text">
         <Link href="/">← Back to test run</Link>
       </p>
     </main>

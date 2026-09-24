@@ -3,28 +3,21 @@ import type { TestStatus } from "@/content/types";
 type SuiteHeaderProps = {
   file: string;
   status: TestStatus;
-  mobile?: boolean;
+  /** Reveal delay in seconds; omit to render without the reveal animation. */
   revealDelay?: number;
-  animate?: boolean;
 };
 
-export function SuiteHeader({
-  file,
-  status,
-  mobile,
-  revealDelay,
-  animate,
-}: SuiteHeaderProps) {
-  const badgeClass =
-    status === "pass" ? "badge badge--pass" : "badge badge--fail";
-  const mobileBadge = mobile ? " badge--mobile" : "";
-
+export function SuiteHeader({ file, status, revealDelay }: SuiteHeaderProps) {
   return (
     <div
-      className={`suite-header${mobile ? " suite-header--mobile" : ""}${animate ? " reveal-line" : ""}`}
-      style={animate && revealDelay !== undefined ? { animationDelay: `${revealDelay}s` } : undefined}
+      className={`suite-header${revealDelay !== undefined ? " reveal-line" : ""}`}
+      style={
+        revealDelay !== undefined
+          ? { animationDelay: `${revealDelay}s` }
+          : undefined
+      }
     >
-      <span className={`${badgeClass}${mobileBadge}`}>
+      <span className={`badge badge--${status}`}>
         {status === "pass" ? "PASS" : "FAIL"}
       </span>
       <span>{file}</span>

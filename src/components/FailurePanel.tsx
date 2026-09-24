@@ -6,10 +6,9 @@ import type { FailureDetail } from "@/content/types";
 type FailurePanelProps = {
   failure: FailureDetail;
   panelId: string;
-  mobile?: boolean;
 };
 
-export function FailurePanel({ failure, panelId, mobile }: FailurePanelProps) {
+export function FailurePanel({ failure, panelId }: FailurePanelProps) {
   const headingRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -21,7 +20,7 @@ export function FailurePanel({ failure, panelId, mobile }: FailurePanelProps) {
       id={panelId}
       role="region"
       aria-label="Failure details"
-      className={`detail-panel detail-panel--fail${mobile ? " detail-panel--mobile" : ""}`}
+      className="detail-panel detail-panel--fail"
       tabIndex={-1}
       ref={headingRef}
     >

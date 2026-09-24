@@ -8,11 +8,9 @@ type ButtonProps = {
   sidebar?: boolean;
   small?: boolean;
   mobile?: boolean;
+  disabled?: boolean;
   className?: string;
   children: ReactNode;
-  type?: "button" | "submit";
-  ariaExpanded?: boolean;
-  ariaControls?: string;
 };
 
 export function Button({
@@ -22,11 +20,9 @@ export function Button({
   sidebar,
   small,
   mobile,
+  disabled,
   className = "",
   children,
-  type = "button",
-  ariaExpanded,
-  ariaControls,
 }: ButtonProps) {
   const classes = [
     "btn",
@@ -49,11 +45,10 @@ export function Button({
 
   return (
     <button
-      type={type}
+      type="button"
       className={classes}
       onClick={onClick}
-      aria-expanded={ariaExpanded}
-      aria-controls={ariaControls}
+      disabled={disabled}
     >
       {children}
     </button>

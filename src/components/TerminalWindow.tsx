@@ -1,46 +1,39 @@
 "use client";
 
-import { useCallback, useEffect, type ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import { Button } from "./Button";
 
 type TerminalWindowProps = {
-  mobile?: boolean;
   showSkip?: boolean;
-  skipLabel?: string;
+  skipped?: boolean;
   onSkip?: () => void;
   onBack?: () => void;
-  onTerminalClick?: () => void;
   children: ReactNode;
 };
 
 export function TerminalWindow({
-  mobile,
   showSkip,
-  skipLabel,
+  skipped,
   onSkip,
   onBack,
-  onTerminalClick,
   children,
 }: TerminalWindowProps) {
-  const handleKeyDown = useCallback(
-    (e: KeyboardEvent) => {
-      if (e.key === "Escape" && showSkip && onSkip) {
-        onSkip();
-      }
-    },
-    [showSkip, onSkip],
-  );
+  const canSkip = Boolean(showSkip && !skipped && onSkip);
 
   useEffect(() => {
+    if (!canSkip) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onSkip?.();
+    };
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [handleKeyDown]);
+  }, [canSkip, onSkip]);
 
   return (
     <section
       aria-label="Test results"
-      className={`terminal${mobile ? " terminal--mobile" : ""}`}
-      onClick={showSkip ? onTerminalClick : undefined}
+      className="terminal"
+      onClick={canSkip ? onSkip : undefined}
     >
       <div className="terminal__titlebar">
         <div className="terminal__titlebar-left">
@@ -52,21 +45,17 @@ export function TerminalWindow({
           <span>~/anderson — test run</span>
         </div>
         {showSkip && onSkip && (
-          <Button small mobile={mobile} onClick={onSkip}>
-            {skipLabel}
+          <Button small onClick={onSkip} disabled={skipped}>
+            {skipped ? "Animation skipped" : "Skip animation"}
           </Button>
         )}
         {!showSkip && onBack && (
-          <Button small mobile={mobile} onClick={onBack}>
+          <Button small onClick={onBack}>
             <span aria-hidden="true">←</span> All results
           </Button>
         )}
       </div>
-      <div
-        className={`terminal__body${mobile ? " terminal__body--mobile" : ""}`}
-      >
-        {children}
-      </div>
+      <div className="terminal__body">{children}</div>
     </section>
   );
 }

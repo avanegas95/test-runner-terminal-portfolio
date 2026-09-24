@@ -17,7 +17,7 @@ visible too, so recruiters who aren't engineers never get stuck.
 | `README.md` | This file | Start here |
 | `DESIGN_SPEC.md` | Layout, components, states, motion, accessibility, responsive rules | Building the UI |
 | `CONTENT.md` | Every piece of copy, the full test list, timings, Known Issues | Data and copy (put it in one content file) |
-| `tokens.css` / `tokens.json` | Color, type, spacing and radius tokens | Theme setup |
+| `tokens.css` | Color, type, spacing and radius tokens | Theme setup |
 | `screenshots/*.png` | Full-page renders of all six screens at @2x | Visual target |
 | `previews/*.html` | Static HTML exports you can open in a browser; the links between screens work | Checking hover, focus and animation |
 | `mockups-source/*.dc.html` | Original design-canvas source files | Exact values if something is unclear |

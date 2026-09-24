@@ -48,10 +48,40 @@ a:hover {
   align-items: flex-start;
 }
 
-.page--mobile-expanded {
-  padding: 0 0 40px;
+/* Plain nav destinations (Projects / Resume / Contact) */
+.plain-page {
+  max-width: 720px;
+  padding: 72px 80px;
+  line-height: 1.75;
+}
+
+.plain-page__eyebrow {
+  margin: 0;
+  font-size: 14px;
+  color: var(--dim);
+}
+
+.plain-page__title {
+  margin: 8px 0 16px;
+  font-size: 32px;
+  color: var(--text-strong);
+}
+
+.plain-page__text {
+  color: var(--muted);
+}
+
+.plain-page__links {
+  list-style: none;
+  margin: 24px 0;
+  padding: 0;
+  display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 12px;
+}
+
+.plain-page__label {
+  color: var(--dim);
 }
 
 /* Identity aside */
@@ -132,16 +162,16 @@ a:hover {
   gap: 12px;
 }
 
-.mobile-hero--compact .identity__name {
-  font-size: 18px;
-}
-
 .mobile-hero .identity__location {
   font-size: 13px;
 }
 
 .mobile-hero .identity__name {
   font-size: var(--fs-h1-m);
+}
+
+.mobile-hero--compact .identity__name {
+  font-size: 18px;
 }
 
 .mobile-hero .identity__role {
@@ -165,6 +195,15 @@ a:hover {
   margin-top: 28px;
 }
 
+.mobile-hint {
+  margin: 16px 0 0;
+  padding: 0 20px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--dim);
+  text-wrap: pretty;
+}
+
 .mobile-nav-bottom .identity__nav {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -179,14 +218,6 @@ a:hover {
   border: 1px solid var(--border);
   border-radius: var(--radius-window);
   overflow: hidden;
-}
-
-.terminal--mobile {
-  margin: 28px 12px 0;
-}
-
-.page--mobile-expanded .terminal--mobile {
-  margin-top: 0;
 }
 
 .terminal__titlebar {
@@ -223,12 +254,6 @@ a:hover {
   line-height: var(--lh-term);
 }
 
-.terminal__body--mobile {
-  padding: 20px 16px 24px;
-  font-size: var(--fs-term-m);
-  line-height: var(--lh-term-m);
-}
-
 /* Buttons */
 .btn {
   display: inline-flex;
@@ -252,6 +277,12 @@ a:hover {
 .btn:hover {
   border-color: var(--accent);
   color: #fff;
+}
+
+.btn:disabled {
+  cursor: default;
+  color: var(--muted);
+  border-color: var(--border-ctl);
 }
 
 .btn:focus-visible {
@@ -298,6 +329,10 @@ a:hover {
   color: var(--dim);
 }
 
+.final-prompt {
+  margin-top: 16px;
+}
+
 /* Cursor */
 .cursor {
   display: inline-block;
@@ -328,11 +363,6 @@ a:hover {
   margin-top: 20px;
 }
 
-.suite-header--mobile {
-  gap: 10px;
-  margin-top: 16px;
-}
-
 .badge {
   padding: 0 8px;
   border-radius: var(--radius-badge);
@@ -351,11 +381,6 @@ a:hover {
   color: var(--on-fail);
 }
 
-.badge--mobile {
-  padding: 0 6px;
-  font-size: 11px;
-  line-height: 1.8;
-}
 
 /* Test rows */
 .test-list {
@@ -363,11 +388,6 @@ a:hover {
   flex-direction: column;
   padding-left: 28px;
   margin-top: 6px;
-}
-
-.test-list--mobile {
-  padding-left: 8px;
-  margin-top: 4px;
 }
 
 .test-row {
@@ -388,15 +408,6 @@ a:hover {
   text-align: left;
   text-decoration: none;
   cursor: pointer;
-}
-
-.test-row--mobile {
-  grid-template-columns: 1.2em minmax(0, 1fr) auto;
-  column-gap: 8px;
-  width: calc(100% + 16px);
-  min-height: var(--touch-min);
-  padding: 10px 8px;
-  margin: 0 -8px;
 }
 
 .test-row:hover,
@@ -442,10 +453,6 @@ a:hover {
   font-size: 14px;
 }
 
-.test-row__timing--mobile {
-  font-size: 12px;
-}
-
 .test-row__timing--hint {
   color: var(--muted);
 }
@@ -464,6 +471,7 @@ a:hover {
 
 /* Detail panel */
 .detail-panel {
+  overflow-wrap: anywhere;
   margin: 10px 0 14px 34px;
   padding: 28px 32px;
   border: 1px solid var(--border-panel);
@@ -472,11 +480,6 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: 24px;
-}
-
-.detail-panel--mobile {
-  margin: 10px 0 14px 0;
-  padding: 20px 16px;
 }
 
 .detail-panel--fail {
@@ -579,18 +582,6 @@ a:hover {
   gap: 12px;
 }
 
-.detail-panel__actions--mobile {
-  flex-direction: column;
-}
-
-.detail-panel__actions-row {
-  display: flex;
-  gap: 12px;
-}
-
-.detail-panel__actions-row .btn {
-  flex: 1;
-}
 
 /* Collapsed suites link */
 .collapsed-suites {
@@ -672,20 +663,12 @@ a:hover {
   gap: 20px;
 }
 
-.known-issues-panel--mobile {
-  padding: 20px 16px;
-}
-
 .known-issues-panel__title {
   margin: 0;
   font-size: var(--fs-h2);
   line-height: 1.3;
   font-weight: 700;
   color: var(--text-strong);
-}
-
-.known-issues-panel__title--mobile {
-  font-size: var(--fs-h2-m);
 }
 
 .known-issues-panel__hash {
@@ -795,9 +778,13 @@ a:hover {
   color: var(--muted);
 }
 
-/* Animation reveal */
+/* Animation reveal: each line is hidden until its animation-delay, then
+   appears instantly. `step-start` jumps to the end state as soon as the
+   (1ms) active phase begins, so the finished state is always opacity 1.
+   (`steps(1, end)` can finish at progress 0.9999… due to float rounding
+   and leave the line invisible forever.) */
 .reveal-line {
-  animation: reveal 0.01s steps(1, end) both;
+  animation: reveal 1ms step-start both;
 }
 
 @keyframes reveal {
@@ -807,11 +794,6 @@ a:hover {
   to {
     opacity: 1;
   }
-}
-
-.run--skipped .reveal-line {
-  animation: none;
-  opacity: 1;
 }
 
 /* Reduced motion */
@@ -835,6 +817,7 @@ a:hover {
 @media (max-width: 1023px) {
   .page {
     flex-direction: column;
+    align-items: stretch;
     padding: 48px 40px;
     gap: 40px;
   }
@@ -854,7 +837,7 @@ a:hover {
     justify-content: center;
   }
 
-  .identity__hint {
+  .identity__hint--desktop {
     display: none;
   }
 }
@@ -862,8 +845,92 @@ a:hover {
 /* Mobile */
 @media (max-width: 639px) {
   .page {
-    padding: 0;
+    padding: 0 0 40px;
     gap: 0;
+  }
+
+  .only-desktop {
+    display: none;
+  }
+
+  .terminal {
+    margin: 28px 12px 0;
+  }
+
+  .page--expanded .terminal {
+    margin-top: 0;
+  }
+
+  .terminal__body {
+    padding: 20px 16px 24px;
+    font-size: var(--fs-term-m);
+    line-height: var(--lh-term-m);
+  }
+
+  .terminal .btn {
+    min-height: 48px;
+    padding: 0 12px;
+  }
+
+  .suite-header {
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .badge {
+    padding: 0 6px;
+    font-size: 11px;
+    line-height: 1.8;
+  }
+
+  .test-list {
+    padding-left: 8px;
+    margin-top: 4px;
+  }
+
+  .test-row {
+    grid-template-columns: 1.2em minmax(0, 1fr) auto;
+    column-gap: 8px;
+    width: calc(100% + 16px);
+    min-height: var(--touch-min);
+    padding: 10px 8px;
+    margin: 0 -8px;
+  }
+
+  .test-row__timing {
+    font-size: 12px;
+  }
+
+  .test-row__chev {
+    display: none;
+  }
+
+  .detail-panel {
+    margin: 10px 0 14px 0;
+    padding: 20px 16px;
+  }
+
+  /* Full resume on its own row, then Collapse and Next side by side. */
+  .detail-panel__resume {
+    order: -1;
+    flex-basis: 100%;
+  }
+
+  .detail-panel__collapse,
+  .detail-panel__next {
+    flex: 1;
+  }
+
+  .known-issues-panel {
+    padding: 20px 16px;
+  }
+
+  .known-issues-panel__title {
+    font-size: var(--fs-h2-m);
+  }
+
+  .plain-page {
+    padding: 40px 20px;
   }
 
   .identity--desktop {
@@ -908,7 +975,8 @@ a:hover {
 @media (min-width: 640px) {
   .mobile-hero,
   .mobile-nav-bottom,
-  .mobile-hero--compact {
+  .mobile-hint,
+  .only-mobile {
     display: none;
   }
 
