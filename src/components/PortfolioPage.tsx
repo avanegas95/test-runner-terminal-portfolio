@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { identity } from "@/content/identity";
+import { getTestById } from "@/content/tests";
 import { useAnimationSkip } from "@/hooks/useAnimationSkip";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { IdentityAside } from "./IdentityAside";
@@ -16,18 +17,10 @@ type PortfolioPageProps = {
   initialExpandedId?: string | null;
 };
 
-function useMediaQuery(query: string): boolean {
-  const [matches, setMatches] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia(query);
-    setMatches(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setMatches(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, [query]);
-
-  return matches;
+/** Only passing tests with a detail panel can be deep-linked by hash. */
+function isExpandableTest(id: string) {
+  const test = getTestById(id);
+  return test?.status === "pass" && Boolean(test.detail);
 }
 
 export function PortfolioPage({
@@ -37,12 +30,14 @@ export function PortfolioPage({
   const router = useRouter();
   const pathname = usePathname();
   const reducedMotion = useReducedMotion();
-  const { skipped, skip, skipLabel } = useAnimationSkip(reducedMotion);
-  const isMobile = useMediaQuery("(max-width: 639px)");
 
   const [mode, setMode] = useState<ViewMode>(initialMode);
   const [expandedTestId, setExpandedTestId] = useState<string | null>(
     initialExpandedId,
+  );
+  const { state: runState, skip } = useAnimationSkip(
+    reducedMotion,
+    mode === "home",
   );
 
   const syncFromUrl = useCallback(() => {
@@ -52,8 +47,8 @@ export function PortfolioPage({
       return;
     }
 
-    const hash = window.location.hash.slice(1);
-    if (hash) {
+    const hash = decodeURIComponent(window.location.hash.slice(1));
+    if (hash && isExpandableTest(hash)) {
       setMode("expanded");
       setExpandedTestId(hash);
     } else {
@@ -64,18 +59,13 @@ export function PortfolioPage({
 
   useEffect(() => {
     syncFromUrl();
-    const onPopState = () => syncFromUrl();
     window.addEventListener("hashchange", syncFromUrl);
-    window.addEventListener("popstate", onPopState);
+    window.addEventListener("popstate", syncFromUrl);
     return () => {
       window.removeEventListener("hashchange", syncFromUrl);
-      window.removeEventListener("popstate", onPopState);
+      window.removeEventListener("popstate", syncFromUrl);
     };
   }, [syncFromUrl]);
-
-  useEffect(() => {
-    syncFromUrl();
-  }, [pathname, syncFromUrl]);
 
   const handleExpand = useCallback((testId: string) => {
     setMode("expanded");
@@ -84,77 +74,61 @@ export function PortfolioPage({
   }, []);
 
   const handleCollapse = useCallback(() => {
+    const previousId = expandedTestId;
+    if (pathname !== "/") {
+      router.push("/", { scroll: false });
+      return;
+    }
     setMode("home");
     setExpandedTestId(null);
     window.history.pushState(null, "", "/");
-  }, []);
+    // Return focus to the row that was expanded.
+    if (previousId) {
+      requestAnimationFrame(() =>
+        document.getElementById(`row-${previousId}`)?.focus(),
+      );
+    }
+  }, [expandedTestId, pathname, router]);
 
   const handleOpenKnownIssues = useCallback(() => {
-    setMode("known-issues");
-    setExpandedTestId("flaky-test");
     router.push("/known-issues", { scroll: false });
   }, [router]);
 
-  const handleBack = useCallback(() => {
-    handleCollapse();
-  }, [handleCollapse]);
-
-  const handleSkip = useCallback(
-    (e?: React.MouseEvent) => {
-      e?.stopPropagation();
-      skip();
-    },
-    [skip],
-  );
-
   const isExpandedOrKnown = mode === "expanded" || mode === "known-issues";
-  const showHint = mode === "home";
+  const running = mode === "home" && runState === "running";
 
   return (
-    <div
-      className={`page${isMobile && isExpandedOrKnown ? " page--mobile-expanded" : ""}`}
-    >
-      {!isMobile && <IdentityAside showHint={showHint} />}
+    <div className={`page${isExpandedOrKnown ? " page--expanded" : ""}`}>
+      <IdentityAside showHint={mode === "home"} />
 
-      {isMobile && !isExpandedOrKnown && <MobileHero />}
-
-      {isMobile && isExpandedOrKnown && (
-        <MobileHero compact onBack={handleBack} />
+      {isExpandedOrKnown ? (
+        <MobileHero compact onBack={handleCollapse} />
+      ) : (
+        <MobileHero />
       )}
 
       <TerminalWindow
-        mobile={isMobile}
-        showSkip={mode === "home" && !skipped}
-        skipLabel={skipLabel}
-        onSkip={handleSkip}
-        onBack={isExpandedOrKnown ? handleBack : undefined}
-        onTerminalClick={mode === "home" && !skipped ? () => skip() : undefined}
+        showSkip={mode === "home" && runState !== "done"}
+        skipped={runState === "skipped"}
+        onSkip={skip}
+        onBack={isExpandedOrKnown ? handleCollapse : undefined}
       >
         <TestRun
           mode={mode}
           expandedTestId={expandedTestId}
-          mobile={isMobile}
-          skipped={skipped}
+          animate={running}
           onExpand={handleExpand}
           onCollapse={handleCollapse}
           onOpenKnownIssues={handleOpenKnownIssues}
-          onBack={handleBack}
         />
       </TerminalWindow>
 
-      {isMobile && isExpandedOrKnown && (
+      {isExpandedOrKnown ? (
         <div className="mobile-nav-bottom">
           <IdentityNav mobile />
         </div>
-      )}
-
-      {isMobile && mode === "home" && (
-        <p
-          className="identity__hint"
-          style={{ padding: "0 20px", margin: "16px 0 0" }}
-        >
-          {identity.hintMobile}
-        </p>
+      ) : (
+        <p className="mobile-hint">{identity.hintMobile}</p>
       )}
     </div>
   );

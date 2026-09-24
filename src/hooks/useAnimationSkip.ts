@@ -1,28 +1,40 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { animationSchedule } from "@/content/tests";
 
 const STORAGE_KEY = "test-run-animation-skipped";
+const RUN_MS = animationSchedule.cursor * 1000 + 100;
 
-export function useAnimationSkip(reducedMotion: boolean) {
-  const [skipped, setSkipped] = useState(reducedMotion);
+export type RunState = "running" | "skipped" | "done";
+
+/**
+ * Tracks the home-page reveal. `active` is true while the home run is on screen;
+ * leaving it (or a reduced-motion / remembered-skip preference) ends the run for good.
+ */
+export function useAnimationSkip(reducedMotion: boolean, active: boolean) {
+  const [state, setState] = useState<RunState>("running");
 
   useEffect(() => {
-    if (reducedMotion) {
-      setSkipped(true);
-      return;
-    }
     try {
-      if (sessionStorage.getItem(STORAGE_KEY) === "true") {
-        setSkipped(true);
-      }
+      if (sessionStorage.getItem(STORAGE_KEY) === "true") setState("done");
     } catch {
       /* sessionStorage unavailable */
     }
-  }, [reducedMotion]);
+  }, []);
+
+  useEffect(() => {
+    if (state !== "running") return;
+    if (reducedMotion || !active) {
+      setState("done");
+      return;
+    }
+    const timer = setTimeout(() => setState("done"), RUN_MS);
+    return () => clearTimeout(timer);
+  }, [state, reducedMotion, active]);
 
   const skip = useCallback(() => {
-    setSkipped(true);
+    setState((s) => (s === "running" ? "skipped" : s));
     try {
       sessionStorage.setItem(STORAGE_KEY, "true");
     } catch {
@@ -30,5 +42,5 @@ export function useAnimationSkip(reducedMotion: boolean) {
     }
   }, []);
 
-  return { skipped, skip, skipLabel: skipped ? "Animation skipped" : "Skip animation" };
+  return { state, skip };
 }

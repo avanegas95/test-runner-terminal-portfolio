@@ -8,7 +8,6 @@ type DetailPanelProps = {
   detail: Detail;
   testName: string;
   panelId: string;
-  mobile?: boolean;
   nextTestId?: string | null;
   nextTestName?: string;
   onCollapse: () => void;
@@ -19,7 +18,6 @@ export function DetailPanel({
   detail,
   testName,
   panelId,
-  mobile,
   nextTestId,
   nextTestName,
   onCollapse,
@@ -36,7 +34,7 @@ export function DetailPanel({
       id={panelId}
       role="region"
       aria-label={`${testName} details`}
-      className={`detail-panel${mobile ? " detail-panel--mobile" : ""}`}
+      className="detail-panel"
       tabIndex={-1}
       ref={headingRef}
     >
@@ -86,42 +84,22 @@ export function DetailPanel({
         </div>
       )}
 
-      <div
-        className={`detail-panel__actions${mobile ? " detail-panel__actions--mobile" : ""}`}
-      >
-        {mobile ? (
-          <>
-            <Button href="/resume" primary mobile>
-              Full resume<span aria-hidden="true">→</span>
-            </Button>
-            <div className="detail-panel__actions-row">
-              <Button mobile onClick={onCollapse}>
-                <span aria-hidden="true">▴</span> Collapse
-              </Button>
-              {nextTestId && nextTestName && onNavigateTest && (
-                <Button mobile onClick={() => onNavigateTest(nextTestId)}>
-                  Next: {nextTestName.split(" — ")[0]}
-                  <span aria-hidden="true">→</span>
-                </Button>
-              )}
-            </div>
-          </>
-        ) : (
-          <>
-            <Button onClick={onCollapse}>
-              <span aria-hidden="true">▴</span> Collapse
-            </Button>
-            {nextTestId && nextTestName && onNavigateTest && (
-              <Button onClick={() => onNavigateTest(nextTestId)}>
-                Next: {nextTestName.split(" — ")[0]}
-                <span aria-hidden="true">→</span>
-              </Button>
-            )}
-            <Button href="/resume" primary>
-              Full resume<span aria-hidden="true">→</span>
-            </Button>
-          </>
+      <div className="detail-panel__actions">
+        <Button onClick={onCollapse} className="detail-panel__collapse">
+          <span aria-hidden="true">▴</span> Collapse
+        </Button>
+        {nextTestId && nextTestName && onNavigateTest && (
+          <Button
+            onClick={() => onNavigateTest(nextTestId)}
+            className="detail-panel__next"
+          >
+            Next: {nextTestName}
+            <span aria-hidden="true">→</span>
+          </Button>
         )}
+        <Button href="/resume" primary className="detail-panel__resume">
+          Full resume<span aria-hidden="true">→</span>
+        </Button>
       </div>
     </div>
   );

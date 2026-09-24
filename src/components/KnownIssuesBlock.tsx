@@ -2,10 +2,6 @@ import { knownIssues, knownIssuesMeta } from "@/content/known-issues";
 import type { KnownIssueSeverity } from "@/content/types";
 import { Button } from "./Button";
 
-type KnownIssuesBlockProps = {
-  mobile?: boolean;
-};
-
 function SeverityChip({ severity }: { severity: KnownIssueSeverity }) {
   const className = [
     "severity-chip",
@@ -18,19 +14,15 @@ function SeverityChip({ severity }: { severity: KnownIssueSeverity }) {
   return <span className={className}>{severity}</span>;
 }
 
-export function KnownIssuesBlock({ mobile }: KnownIssuesBlockProps) {
+export function KnownIssuesBlock() {
   return (
     <>
       <div className="known-issues-prompt">
         <span className="prompt__dollar">$</span> cat KNOWN_ISSUES.md
       </div>
-      <div
-        className={`known-issues-panel${mobile ? " known-issues-panel--mobile" : ""}`}
-      >
+      <div className="known-issues-panel">
         <div>
-          <h2
-            className={`known-issues-panel__title${mobile ? " known-issues-panel__title--mobile" : ""}`}
-          >
+          <h2 className="known-issues-panel__title">
             <span className="known-issues-panel__hash">#</span>{" "}
             {knownIssuesMeta.title}
           </h2>
@@ -79,7 +71,7 @@ export function KnownIssuesBlock({ mobile }: KnownIssuesBlockProps) {
           <span className="known-issues-panel__footer-text">
             {knownIssuesMeta.footerPrompt}
           </span>
-          <Button href={knownIssuesMeta.footerHref} primary={!mobile} mobile={mobile}>
+          <Button href={knownIssuesMeta.footerHref} primary>
             {knownIssuesMeta.footerAction}
             <span aria-hidden="true">→</span>
           </Button>
